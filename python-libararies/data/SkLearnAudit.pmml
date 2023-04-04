@@ -1,0 +1,455 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<PMML xmlns="http://www.dmg.org/PMML-4_4" xmlns:data="http://jpmml.org/jpmml-model/InlineTable" version="4.4">
+	<Header>
+		<Application name="SkLearn2PMML package" version="0.91.1"/>
+		<Timestamp>2023-03-28T12:02:21Z</Timestamp>
+	</Header>
+	<DataDictionary>
+		<DataField name="Adjusted" optype="categorical" dataType="integer">
+			<Value value="0"/>
+			<Value value="1"/>
+		</DataField>
+		<DataField name="Income" optype="continuous" dataType="double">
+			<Interval closure="closedClosed" leftMargin="609.72" rightMargin="481259.5"/>
+		</DataField>
+		<DataField name="Employment" optype="categorical" dataType="string">
+			<Value value="Consultant"/>
+			<Value value="PSFederal"/>
+			<Value value="PSLocal"/>
+			<Value value="PSState"/>
+			<Value value="Private"/>
+			<Value value="SelfEmp"/>
+			<Value value="Volunteer"/>
+		</DataField>
+		<DataField name="Gender" optype="categorical" dataType="string">
+			<Value value="Female"/>
+			<Value value="Male"/>
+		</DataField>
+		<DataField name="Marital" optype="categorical" dataType="string">
+			<Value value="Absent"/>
+			<Value value="Divorced"/>
+			<Value value="Married"/>
+			<Value value="Married-spouse-absent"/>
+			<Value value="Unmarried"/>
+			<Value value="Widowed"/>
+		</DataField>
+		<DataField name="Age" optype="continuous" dataType="integer">
+			<Interval closure="closedClosed" leftMargin="17" rightMargin="83"/>
+		</DataField>
+		<DataField name="Hours" optype="continuous" dataType="integer">
+			<Interval closure="closedClosed" leftMargin="1" rightMargin="99"/>
+		</DataField>
+		<DataField name="Education" optype="categorical" dataType="string">
+			<Value value="Associate"/>
+			<Value value="Bachelor"/>
+			<Value value="College"/>
+			<Value value="Doctorate"/>
+			<Value value="HSgrad"/>
+			<Value value="Master"/>
+			<Value value="Preschool"/>
+			<Value value="Professional"/>
+			<Value value="Vocational"/>
+			<Value value="Yr10"/>
+			<Value value="Yr11"/>
+			<Value value="Yr12"/>
+			<Value value="Yr1t4"/>
+			<Value value="Yr5t6"/>
+			<Value value="Yr7t8"/>
+			<Value value="Yr9"/>
+		</DataField>
+		<DataField name="Occupation" optype="categorical" dataType="string">
+			<Value value="Cleaner"/>
+			<Value value="Clerical"/>
+			<Value value="Executive"/>
+			<Value value="Farming"/>
+			<Value value="Home"/>
+			<Value value="Machinist"/>
+			<Value value="Military"/>
+			<Value value="Professional"/>
+			<Value value="Protective"/>
+			<Value value="Repair"/>
+			<Value value="Sales"/>
+			<Value value="Service"/>
+			<Value value="Support"/>
+			<Value value="Transport"/>
+		</DataField>
+	</DataDictionary>
+	<RegressionModel functionName="classification" algorithmName="sklearn.linear_model._logistic.LogisticRegression" normalizationMethod="logit">
+		<MiningSchema>
+			<MiningField name="Adjusted" usageType="target"/>
+			<MiningField name="Gender" missingValueTreatment="asIs"/>
+			<MiningField name="Marital" missingValueTreatment="asIs"/>
+			<MiningField name="Education" missingValueTreatment="asIs"/>
+			<MiningField name="Occupation" missingValueTreatment="asIs"/>
+			<MiningField name="Income" missingValueTreatment="asIs"/>
+			<MiningField name="Employment" missingValueTreatment="asIs"/>
+			<MiningField name="Age" missingValueTreatment="asIs"/>
+			<MiningField name="Hours" missingValueTreatment="asIs"/>
+		</MiningSchema>
+		<Output>
+			<OutputField name="probability(0)" optype="continuous" dataType="double" feature="probability" value="0"/>
+			<OutputField name="probability(1)" optype="continuous" dataType="double" feature="probability" value="1"/>
+		</Output>
+		<ModelStats>
+			<UnivariateStats field="Gender">
+				<Counts totalFreq="1899" missingFreq="0" invalidFreq="0"/>
+				<DiscrStats>
+					<Array type="string">Female Male</Array>
+					<Array type="int">592 1307</Array>
+				</DiscrStats>
+			</UnivariateStats>
+			<UnivariateStats field="Marital">
+				<Counts totalFreq="1899" missingFreq="0" invalidFreq="0"/>
+				<DiscrStats>
+					<Array type="string">Absent Divorced Married Married-spouse-absent Unmarried Widowed</Array>
+					<Array type="int">633 256 878 21 64 47</Array>
+				</DiscrStats>
+			</UnivariateStats>
+			<UnivariateStats field="Education">
+				<Counts totalFreq="1899" missingFreq="0" invalidFreq="0"/>
+				<DiscrStats>
+					<Array type="string">Associate Bachelor College Doctorate HSgrad Master Preschool Professional Vocational Yr10 Yr11 Yr12 Yr1t4 Yr5t6 Yr7t8 Yr9</Array>
+					<Array type="int">67 332 418 24 633 98 6 23 81 54 65 15 5 21 32 25</Array>
+				</DiscrStats>
+			</UnivariateStats>
+			<UnivariateStats field="Occupation">
+				<Counts totalFreq="1899" missingFreq="0" invalidFreq="0"/>
+				<DiscrStats>
+					<Array type="string">Cleaner Clerical Executive Farming Home Machinist Military Professional Protective Repair Sales Service Support Transport</Array>
+					<Array type="int">91 232 289 58 5 139 1 247 40 225 206 210 49 107</Array>
+				</DiscrStats>
+			</UnivariateStats>
+			<UnivariateStats field="Income">
+				<Counts totalFreq="1899" missingFreq="0" invalidFreq="0"/>
+				<NumericInfo minimum="609.72" maximum="481259.5" mean="84404.87069510268" standardDeviation="69670.62788525566" median="59534.87" interQuartileRange="79343.92"/>
+			</UnivariateStats>
+			<UnivariateStats field="Employment">
+				<Counts totalFreq="1899" missingFreq="0" invalidFreq="0"/>
+				<DiscrStats>
+					<Array type="string">Consultant PSFederal PSLocal PSState Private SelfEmp Volunteer</Array>
+					<Array type="int">148 69 119 72 1411 79 1</Array>
+				</DiscrStats>
+			</UnivariateStats>
+			<UnivariateStats field="Age">
+				<Counts totalFreq="1899" missingFreq="0" invalidFreq="0"/>
+				<NumericInfo minimum="17" maximum="83" mean="38.30279094260137" standardDeviation="13.01032310200397" median="37.0" interQuartileRange="19.0"/>
+			</UnivariateStats>
+			<UnivariateStats field="Hours">
+				<Counts totalFreq="1899" missingFreq="0" invalidFreq="0"/>
+				<NumericInfo minimum="1" maximum="99" mean="40.56714060031596" standardDeviation="11.656262333704198" median="40.0" interQuartileRange="5.0"/>
+			</UnivariateStats>
+		</ModelStats>
+		<LocalTransformations>
+			<DerivedField name="eval(numpy.log(X[0]))" optype="continuous" dataType="double">
+				<Apply function="ln">
+					<FieldRef field="Income"/>
+				</Apply>
+			</DerivedField>
+			<DerivedField name="lookup(Employment)" optype="categorical" dataType="string">
+				<MapValues outputColumn="data:output" dataType="string">
+					<FieldColumnPair field="Employment" column="data:input"/>
+					<InlineTable>
+						<row>
+							<data:input>PSState</data:input>
+							<data:output>Public</data:output>
+						</row>
+						<row>
+							<data:input>Volunteer</data:input>
+							<data:output>Other</data:output>
+						</row>
+						<row>
+							<data:input>PSFederal</data:input>
+							<data:output>Public</data:output>
+						</row>
+						<row>
+							<data:input>Private</data:input>
+							<data:output>Private</data:output>
+						</row>
+						<row>
+							<data:input>Consultant</data:input>
+							<data:output>Private</data:output>
+						</row>
+						<row>
+							<data:input>SelfEmp</data:input>
+							<data:output>Private</data:output>
+						</row>
+						<row>
+							<data:input>PSLocal</data:input>
+							<data:output>Public</data:output>
+						</row>
+					</InlineTable>
+				</MapValues>
+			</DerivedField>
+			<DerivedField name="standardScaler(Age)" optype="continuous" dataType="double">
+				<Apply function="/">
+					<Apply function="-">
+						<FieldRef field="Age"/>
+						<Constant dataType="double">38.30279094260137</Constant>
+					</Apply>
+					<Constant dataType="double">13.010323102003973</Constant>
+				</Apply>
+			</DerivedField>
+			<DerivedField name="standardScaler(Hours)" optype="continuous" dataType="double">
+				<Apply function="/">
+					<Apply function="-">
+						<FieldRef field="Hours"/>
+						<Constant dataType="double">40.56714060031596</Constant>
+					</Apply>
+					<Constant dataType="double">11.656262333704255</Constant>
+				</Apply>
+			</DerivedField>
+			<DerivedField name="Gender=Female" optype="continuous" dataType="double">
+				<NormDiscrete field="Gender" value="Female"/>
+			</DerivedField>
+			<DerivedField name="Marital=Absent" optype="continuous" dataType="double">
+				<NormDiscrete field="Marital" value="Absent"/>
+			</DerivedField>
+			<DerivedField name="Marital=Divorced" optype="continuous" dataType="double">
+				<NormDiscrete field="Marital" value="Divorced"/>
+			</DerivedField>
+			<DerivedField name="Marital=Married" optype="continuous" dataType="double">
+				<NormDiscrete field="Marital" value="Married"/>
+			</DerivedField>
+			<DerivedField name="Marital=Married-spouse-absent" optype="continuous" dataType="double">
+				<NormDiscrete field="Marital" value="Married-spouse-absent"/>
+			</DerivedField>
+			<DerivedField name="Marital=Unmarried" optype="continuous" dataType="double">
+				<NormDiscrete field="Marital" value="Unmarried"/>
+			</DerivedField>
+			<DerivedField name="Marital=Widowed" optype="continuous" dataType="double">
+				<NormDiscrete field="Marital" value="Widowed"/>
+			</DerivedField>
+			<DerivedField name="Gender=Male" optype="continuous" dataType="double">
+				<NormDiscrete field="Gender" value="Male"/>
+			</DerivedField>
+		</LocalTransformations>
+		<RegressionTable intercept="-3.322724366951132" targetCategory="1">
+			<NumericPredictor name="eval(numpy.log(X[0]))" coefficient="0.04423951046241248"/>
+			<NumericPredictor name="standardScaler(Age)" coefficient="0.36084896529844457"/>
+			<NumericPredictor name="standardScaler(Hours)" coefficient="0.3913644669195115"/>
+			<CategoricalPredictor name="lookup(Employment)" value="Private" coefficient="0.17542389509103012"/>
+			<CategoricalPredictor name="lookup(Employment)" value="Public" coefficient="0.18157597958867305"/>
+			<CategoricalPredictor name="Gender" value="Female" coefficient="-0.17592853713454196"/>
+			<CategoricalPredictor name="Gender" value="Male" coefficient="0.16373528563317152"/>
+			<CategoricalPredictor name="Marital" value="Absent" coefficient="-0.5264961555914941"/>
+			<CategoricalPredictor name="Marital" value="Divorced" coefficient="-0.4531792520779095"/>
+			<CategoricalPredictor name="Marital" value="Married" coefficient="1.410320153776594"/>
+			<CategoricalPredictor name="Marital" value="Married-spouse-absent" coefficient="-0.1671703703261373"/>
+			<CategoricalPredictor name="Marital" value="Unmarried" coefficient="0.005222014524639544"/>
+			<CategoricalPredictor name="Marital" value="Widowed" coefficient="-0.28088964180705556"/>
+			<CategoricalPredictor name="Education" value="Bachelor" coefficient="0.5373463559757098"/>
+			<CategoricalPredictor name="Education" value="College" coefficient="-0.2873712455953619"/>
+			<CategoricalPredictor name="Education" value="Doctorate" coefficient="1.086856483492421"/>
+			<CategoricalPredictor name="Education" value="HSgrad" coefficient="-0.5431734805142269"/>
+			<CategoricalPredictor name="Education" value="Master" coefficient="0.9239562162284997"/>
+			<CategoricalPredictor name="Education" value="Preschool" coefficient="-0.3830497314081552"/>
+			<CategoricalPredictor name="Education" value="Professional" coefficient="1.5376700179110083"/>
+			<CategoricalPredictor name="Education" value="Vocational" coefficient="-0.4546122428109083"/>
+			<CategoricalPredictor name="Education" value="Yr10" coefficient="-0.7288333766967222"/>
+			<CategoricalPredictor name="Education" value="Yr11" coefficient="-0.7169558026176782"/>
+			<CategoricalPredictor name="Education" value="Yr12" coefficient="-0.6131370737632182"/>
+			<CategoricalPredictor name="Education" value="Yr1t4" coefficient="-0.8159150413769983"/>
+			<CategoricalPredictor name="Education" value="Yr5t6" coefficient="-1.0342561708509517"/>
+			<CategoricalPredictor name="Education" value="Yr7t8" coefficient="-1.7021533791415513"/>
+			<CategoricalPredictor name="Education" value="Yr9" coefficient="-1.3454841191581197"/>
+			<CategoricalPredictor name="Occupation" value="Clerical" coefficient="0.6815418307460327"/>
+			<CategoricalPredictor name="Occupation" value="Executive" coefficient="1.1154778174291047"/>
+			<CategoricalPredictor name="Occupation" value="Farming" coefficient="-0.6045788420632762"/>
+			<CategoricalPredictor name="Occupation" value="Home" coefficient="-0.0522325348749038"/>
+			<CategoricalPredictor name="Occupation" value="Machinist" coefficient="-0.09481906657398821"/>
+			<CategoricalPredictor name="Occupation" value="Military" coefficient="-0.025770999736676896"/>
+			<CategoricalPredictor name="Occupation" value="Professional" coefficient="0.8672267869741225"/>
+			<CategoricalPredictor name="Occupation" value="Protective" coefficient="0.952659002681358"/>
+			<CategoricalPredictor name="Occupation" value="Repair" coefficient="0.20342206409045804"/>
+			<CategoricalPredictor name="Occupation" value="Sales" coefficient="0.46850977246683617"/>
+			<CategoricalPredictor name="Occupation" value="Service" coefficient="-0.9167369527521442"/>
+			<CategoricalPredictor name="Occupation" value="Support" coefficient="0.7150957324882649"/>
+			<CategoricalPredictor name="Occupation" value="Transport" coefficient="-0.2917109234616235"/>
+			<PredictorTerm name="Gender=Female:Marital=Absent" coefficient="-0.62807785967451">
+				<FieldRef field="Gender=Female"/>
+				<FieldRef field="Marital=Absent"/>
+			</PredictorTerm>
+			<PredictorTerm name="Gender=Female:Marital=Divorced" coefficient="-0.529941715256891">
+				<FieldRef field="Gender=Female"/>
+				<FieldRef field="Marital=Divorced"/>
+			</PredictorTerm>
+			<PredictorTerm name="Gender=Female:Marital=Married" coefficient="1.1373447495369848">
+				<FieldRef field="Gender=Female"/>
+				<FieldRef field="Marital=Married"/>
+			</PredictorTerm>
+			<PredictorTerm name="Gender=Female:Marital=Married-spouse-absent" coefficient="-0.1256265719635079">
+				<FieldRef field="Gender=Female"/>
+				<FieldRef field="Marital=Married-spouse-absent"/>
+			</PredictorTerm>
+			<PredictorTerm name="Gender=Female:Marital=Unmarried" coefficient="0.11724335395476508">
+				<FieldRef field="Gender=Female"/>
+				<FieldRef field="Marital=Unmarried"/>
+			</PredictorTerm>
+			<PredictorTerm name="Gender=Female:Marital=Widowed" coefficient="-0.1468704937313772">
+				<FieldRef field="Gender=Female"/>
+				<FieldRef field="Marital=Widowed"/>
+			</PredictorTerm>
+			<PredictorTerm name="Gender=Male:Marital=Absent" coefficient="0.10158170408301591">
+				<FieldRef field="Gender=Male"/>
+				<FieldRef field="Marital=Absent"/>
+			</PredictorTerm>
+			<PredictorTerm name="Gender=Male:Marital=Divorced" coefficient="0.07676246317898432">
+				<FieldRef field="Gender=Male"/>
+				<FieldRef field="Marital=Divorced"/>
+			</PredictorTerm>
+			<PredictorTerm name="Gender=Male:Marital=Married" coefficient="0.2729754042396085">
+				<FieldRef field="Gender=Male"/>
+				<FieldRef field="Marital=Married"/>
+			</PredictorTerm>
+			<PredictorTerm name="Gender=Male:Marital=Married-spouse-absent" coefficient="-0.04154379836263042">
+				<FieldRef field="Gender=Male"/>
+				<FieldRef field="Marital=Married-spouse-absent"/>
+			</PredictorTerm>
+			<PredictorTerm name="Gender=Male:Marital=Unmarried" coefficient="-0.11202133943012549">
+				<FieldRef field="Gender=Male"/>
+				<FieldRef field="Marital=Unmarried"/>
+			</PredictorTerm>
+			<PredictorTerm name="Gender=Male:Marital=Widowed" coefficient="-0.13401914807567808">
+				<FieldRef field="Gender=Male"/>
+				<FieldRef field="Marital=Widowed"/>
+			</PredictorTerm>
+		</RegressionTable>
+		<RegressionTable intercept="0.0" targetCategory="0"/>
+		<ModelVerification recordCount="10">
+			<VerificationFields>
+				<VerificationField field="Education" column="data:Education"/>
+				<VerificationField field="Employment" column="data:Employment"/>
+				<VerificationField field="Gender" column="data:Gender"/>
+				<VerificationField field="Marital" column="data:Marital"/>
+				<VerificationField field="Occupation" column="data:Occupation"/>
+				<VerificationField field="Age" column="data:Age"/>
+				<VerificationField field="Hours" column="data:Hours"/>
+				<VerificationField field="Income" column="data:Income"/>
+				<VerificationField field="probability(0)" column="data:probability_0" precision="1.0E-13" zeroThreshold="1.0E-13"/>
+				<VerificationField field="probability(1)" column="data:probability_1" precision="1.0E-13" zeroThreshold="1.0E-13"/>
+			</VerificationFields>
+			<InlineTable>
+				<row>
+					<data:Education>Yr10</data:Education>
+					<data:Employment>Private</data:Employment>
+					<data:Gender>Male</data:Gender>
+					<data:Marital>Divorced</data:Marital>
+					<data:Occupation>Machinist</data:Occupation>
+					<data:Age>35</data:Age>
+					<data:Hours>50</data:Hours>
+					<data:Income>51457.79</data:Income>
+					<data:probability_0>0.9700725141628735</data:probability_0>
+					<data:probability_1>0.029927485837126473</data:probability_1>
+				</row>
+				<row>
+					<data:Education>College</data:Education>
+					<data:Employment>Private</data:Employment>
+					<data:Gender>Male</data:Gender>
+					<data:Marital>Divorced</data:Marital>
+					<data:Occupation>Transport</data:Occupation>
+					<data:Age>30</data:Age>
+					<data:Hours>40</data:Hours>
+					<data:Income>107142.62</data:Income>
+					<data:probability_0>0.9753016567290962</data:probability_0>
+					<data:probability_1>0.024698343270903825</data:probability_1>
+				</row>
+				<row>
+					<data:Education>Bachelor</data:Education>
+					<data:Employment>Private</data:Employment>
+					<data:Gender>Female</data:Gender>
+					<data:Marital>Absent</data:Marital>
+					<data:Occupation>Clerical</data:Occupation>
+					<data:Age>25</data:Age>
+					<data:Hours>40</data:Hours>
+					<data:Income>36729.36</data:Income>
+					<data:probability_0>0.9601474859345842</data:probability_0>
+					<data:probability_1>0.03985251406541579</data:probability_1>
+				</row>
+				<row>
+					<data:Education>HSgrad</data:Education>
+					<data:Employment>Private</data:Employment>
+					<data:Gender>Male</data:Gender>
+					<data:Marital>Married</data:Marital>
+					<data:Occupation>Sales</data:Occupation>
+					<data:Age>50</data:Age>
+					<data:Hours>48</data:Hours>
+					<data:Income>47011.78</data:Income>
+					<data:probability_0>0.5805440538024085</data:probability_0>
+					<data:probability_1>0.4194559461975916</data:probability_1>
+				</row>
+				<row>
+					<data:Education>HSgrad</data:Education>
+					<data:Employment>Private</data:Employment>
+					<data:Gender>Male</data:Gender>
+					<data:Marital>Married</data:Marital>
+					<data:Occupation>Repair</data:Occupation>
+					<data:Age>54</data:Age>
+					<data:Hours>44</data:Hours>
+					<data:Income>5360.35</data:Income>
+					<data:probability_0>0.6702939195066255</data:probability_0>
+					<data:probability_1>0.3297060804933745</data:probability_1>
+				</row>
+				<row>
+					<data:Education>Associate</data:Education>
+					<data:Employment>PSLocal</data:Employment>
+					<data:Gender>Male</data:Gender>
+					<data:Marital>Married</data:Marital>
+					<data:Occupation>Professional</data:Occupation>
+					<data:Age>44</data:Age>
+					<data:Hours>48</data:Hours>
+					<data:Income>22095.2</data:Income>
+					<data:probability_0>0.3957466418521862</data:probability_0>
+					<data:probability_1>0.6042533581478138</data:probability_1>
+				</row>
+				<row>
+					<data:Education>College</data:Education>
+					<data:Employment>Private</data:Employment>
+					<data:Gender>Female</data:Gender>
+					<data:Marital>Absent</data:Marital>
+					<data:Occupation>Executive</data:Occupation>
+					<data:Age>23</data:Age>
+					<data:Hours>35</data:Hours>
+					<data:Income>72222.2</data:Income>
+					<data:probability_0>0.9773817026809222</data:probability_0>
+					<data:probability_1>0.02261829731907787</data:probability_1>
+				</row>
+				<row>
+					<data:Education>Bachelor</data:Education>
+					<data:Employment>Private</data:Employment>
+					<data:Gender>Female</data:Gender>
+					<data:Marital>Married</data:Marital>
+					<data:Occupation>Support</data:Occupation>
+					<data:Age>48</data:Age>
+					<data:Hours>40</data:Hours>
+					<data:Income>113867.76</data:Income>
+					<data:probability_0>0.2241114815058557</data:probability_0>
+					<data:probability_1>0.7758885184941443</data:probability_1>
+				</row>
+				<row>
+					<data:Education>Yr11</data:Education>
+					<data:Employment>Private</data:Employment>
+					<data:Gender>Male</data:Gender>
+					<data:Marital>Married</data:Marital>
+					<data:Occupation>Transport</data:Occupation>
+					<data:Age>64</data:Age>
+					<data:Hours>40</data:Hours>
+					<data:Income>17142.5</data:Income>
+					<data:probability_0>0.7656565964482773</data:probability_0>
+					<data:probability_1>0.23434340355172265</data:probability_1>
+				</row>
+				<row>
+					<data:Education>HSgrad</data:Education>
+					<data:Employment>Consultant</data:Employment>
+					<data:Gender>Male</data:Gender>
+					<data:Marital>Married</data:Marital>
+					<data:Occupation>Repair</data:Occupation>
+					<data:Age>32</data:Age>
+					<data:Hours>45</data:Hours>
+					<data:Income>13173.25</data:Income>
+					<data:probability_0>0.7766663191391507</data:probability_0>
+					<data:probability_1>0.22333368086084923</data:probability_1>
+				</row>
+			</InlineTable>
+		</ModelVerification>
+	</RegressionModel>
+</PMML>
